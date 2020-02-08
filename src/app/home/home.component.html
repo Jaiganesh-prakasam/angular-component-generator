@@ -1,0 +1,46 @@
+<section fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutGap="10px"
+    fxFlexAlign="center"
+    [ngStyle.xs]="{ width: 90 + '%' }"
+    [ngStyle.lt-md]="{ width: 100 + '%' }"
+    [ngStyle]="{ width: 66 + '%' }"
+  >
+    <mat-card
+      fxFlexAlign="center"
+      [ngStyle]="{ width: 100 + '%', 'background-color': 'red' }"
+    >
+      <mat-card-title>
+        Form item
+      </mat-card-title>
+    </mat-card>
+    <mat-card
+      fxFlexAlign="center"
+      [ngStyle]="{ width: 100 + '%', 'background-color': 'green' }"
+    >
+      <mat-card-title>
+        Layout
+      </mat-card-title>
+    </mat-card>
+  </div>
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutGap="10px"
+    fxFlexAlign="center"
+    [ngStyle.xs]="{ width: 90 + '%' }"
+    [ngStyle.lt-md]="{ width: 100 + '%' }"
+    [ngStyle]="{ width: 33 + '%' }"
+  >
+    <mat-card
+      fxFlexAlign="center"
+      [ngStyle]="{ width: 100 + '%', 'background-color': 'yellow' }"
+    >
+      <mat-card-title>
+        JSON
+      </mat-card-title>
+    </mat-card>
+  </div>
+</section>

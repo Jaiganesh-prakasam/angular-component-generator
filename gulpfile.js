@@ -6,20 +6,20 @@ var browserSync = require('browser-sync');
 var nodemon = require('gulp-nodemon');
 
 function initiateFlow(){
+    // Initial flow will build, activates browser sync and start the production server
+    // to trigger build and reload server when changed after initial load
   watch('src/**/*', series(buildApp, startBrowser, nodemonfunction) );
 }
 function buildApp(cb){
-  console.log('Hello Zell');
-  // console.log(process.env);
-  // put ng build here
+    // to build the application
   exec('ng build', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);
   });
-  // cb();
 }
 function startBrowser(cb){
+    // activates browser sync for the first time and reloads from the second time
     if(!browserSyncvar){
         browserSyncvar = true;
         console.log('inside if node server');
@@ -35,6 +35,7 @@ function startBrowser(cb){
   cb();
 }
 function nodemonfunction(cb){
+    // to trigger the node server for the intial load
     if(!nodeServer){
         nodeServer = true;
         var started = false;
