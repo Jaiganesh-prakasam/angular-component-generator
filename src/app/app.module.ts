@@ -11,6 +11,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { HeaderComponent } from "./navigation/header/header.component";
 import { SidenavListComponent } from "./navigation/sidenav-list/sidenav-list.component";
 import { AboutComponent } from "./about/about.component";
+import { DragDropModule } from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AboutComponent } from "./about/about.component";
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
