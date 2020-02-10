@@ -9,8 +9,13 @@
     [ngStyle]="{ width: 66 + '%' }"
   >
     <mat-card
+      #formItem
       fxFlexAlign="center"
-      [ngStyle]="{ width: 100 + '%', 'background-color': 'red' }"
+      [ngStyle]="{
+        width: 100 + '%',
+        'background-color': 'red',
+        'min-height': '120px'
+      }"
     >
       <mat-card-title>
         Form item
@@ -34,8 +39,13 @@
       </mat-card-content>
     </mat-card>
     <mat-card
+      #layout
       fxFlexAlign="center"
-      [ngStyle]="{ width: 100 + '%', 'background-color': 'green' }"
+      [ngStyle]="{
+        width: 100 + '%',
+        'background-color': 'green',
+        'min-height': '120px'
+      }"
       cdkDropList
       #doneList="cdkDropList"
       [cdkDropListData]="done"
@@ -45,14 +55,15 @@
       <mat-card-title>
         Layout
       </mat-card-title>
-      <mat-card-content>
-        <div class="example-container">
-          <div></div>
-        </div>
+      <mat-card-content
+        style="display: flex; flex-direction: column;"
+        id="dropContainer"
+      >
       </mat-card-content>
     </mat-card>
   </div>
   <div
+    #json
     fxLayout="row"
     fxLayout.xs="column"
     fxLayoutGap="10px"
@@ -63,11 +74,18 @@
   >
     <mat-card
       fxFlexAlign="center"
-      [ngStyle]="{ width: 100 + '%', 'background-color': 'yellow' }"
+      [ngStyle]="{
+        width: 100 + '%',
+        'background-color': 'yellow',
+        'min-height': '120px'
+      }"
     >
       <mat-card-title>
         JSON
       </mat-card-title>
+      <mat-card-content>
+        <pre id="json"></pre>
+      </mat-card-content>
     </mat-card>
   </div>
 </section>

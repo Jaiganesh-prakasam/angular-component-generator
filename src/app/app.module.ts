@@ -1,9 +1,13 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { HomeComponent } from "./home/home.component";
+import {
+  HomeComponent,
+  inputContentAttributesDialog
+} from "./home/home.component";
 import { MaterialModule } from "./material/material.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { LayoutComponent } from "./layout/layout.component";
@@ -14,13 +18,15 @@ import { AboutComponent } from "./about/about.component";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 
 @NgModule({
+  entryComponents: [inputContentAttributesDialog],
   declarations: [
     AppComponent,
     HomeComponent,
     LayoutComponent,
     HeaderComponent,
     SidenavListComponent,
-    AboutComponent
+    AboutComponent,
+    inputContentAttributesDialog
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,8 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    DragDropModule
+    DragDropModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

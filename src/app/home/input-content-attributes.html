@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Input</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Label name</mat-label>
+    <input matInput [(ngModel)]="data.name" required />
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <mat-form-field #typevalue>
+    <mat-label>type</mat-label>
+    <input matInput [(ngModel)]="data.type" required />
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>place Holder</mat-label>
+    <input matInput [(ngModel)]="data.placeholder" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancelClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial [disabled]="">
+    Ok
+  </button>
+</div>
