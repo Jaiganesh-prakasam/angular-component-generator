@@ -8,8 +8,8 @@ import {
 import { LayoutPreviewService } from "../../service/layout-preview.service";
 
 export interface DialogData {
-  labelName: string;
-  id: string;
+  name: string;
+  placeholder: string;
   type: string;
 }
 
