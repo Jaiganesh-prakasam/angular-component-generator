@@ -1,15 +1,11 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { DragDropModule } from "@angular/cdk/drag-drop";
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem
-} from "@angular/cdk/drag-drop";
+import { Component, OnInit, Inject, OnDestroy } from "@angular/core";
+import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA
 } from "@angular/material/dialog";
+import { LayoutPreviewService } from "../../service/layout-preview.service";
 
 export interface DialogData {
   labelName: string;
@@ -22,16 +18,25 @@ export interface DialogData {
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.sass"]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   labelName: string;
   id: string;
   todo = ["Input", "Radio Button", "Check Box", "Button"];
   done = [];
   formJson = [];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    public _layoutPreviewService: LayoutPreviewService
+  ) {}
 
   ngOnInit() {}
+  ngOnDestroy() {
+    let selectedComponent = document.getElementById("dropContainer");
+    console.log(selectedComponent);
+    console.log("home destroyed");
+    this._layoutPreviewService.lastSavedLayout = selectedComponent;
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     // to capture only the drop event on the other container
