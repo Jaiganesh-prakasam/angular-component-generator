@@ -23,19 +23,33 @@ export class HomeComponent implements OnInit, OnDestroy {
   id: string;
   todo = ["Input", "Radio Button", "Check Box", "Button"];
   done = [];
-  formJson = [];
+  formJson: Object[];
 
   constructor(
     public dialog: MatDialog,
     public _layoutPreviewService: LayoutPreviewService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this._layoutPreviewService.lastSavedLayout) {
+      let node = this._layoutPreviewService.lastSavedLayout;
+      document.getElementById("dropContainer").appendChild(node);
+      this.formJson = this._layoutPreviewService.lastSavedJSON;
+      document.getElementById("json").innerHTML = JSON.stringify(
+        this.formJson,
+        undefined,
+        2
+      );
+    }
+  }
   ngOnDestroy() {
     let selectedComponent = document.getElementById("dropContainer");
     console.log(selectedComponent);
     console.log("home destroyed");
     this._layoutPreviewService.lastSavedLayout = selectedComponent;
+    this._layoutPreviewService.lastSavedJSON = this.formJson;
+    console.log(this._layoutPreviewService.lastSavedJSON);
+    console.log(typeof this._layoutPreviewService.lastSavedJSON);
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -86,7 +100,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
   jsonUpdater(pushObject) {
-    this.formJson.push(pushObject);
+    if (this.formJson) {
+      this.formJson.push(pushObject);
+    } else {
+      this.formJson = [pushObject];
+    }
+    console.log(this.formJson);
     document.getElementById("json").innerHTML = JSON.stringify(
       this.formJson,
       undefined,

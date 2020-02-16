@@ -5,5 +5,6 @@ import { Injectable } from "@angular/core";
 })
 export class LayoutPreviewService {
   public lastSavedLayout: any;
+  public lastSavedJSON: Object[];
   constructor() {}
 }
