@@ -4,6 +4,7 @@
     fxLayout.xs="column"
     fxLayoutGap="10px"
     fxFlexAlign="flex-start"
+    fxFlexJustify="flex-start"
     fxFlexAlign.xs="center"
     [ngStyle.xs]="{ width: 90 + '%' }"
     [ngStyle.lt-md]="{ width: 100 + '%' }"
@@ -12,10 +13,26 @@
     <mat-card
       #formItem
       fxFlexAlign="center"
+      [ngStyle.xs]="{
+        width: 100 + '%',
+        'background-color': 'red',
+        'min-height': '30vh',
+        'max-height': '30vh',
+        overflow: 'auto'
+      }"
+      [ngStyle.lt-md]="{
+        width: 100 + '%',
+        'background-color': 'red',
+        'min-height': '38vh',
+        'max-height': '38vh',
+        overflow: 'auto'
+      }"
       [ngStyle]="{
         width: 100 + '%',
         'background-color': 'red',
-        'min-height': '120px'
+        'min-height': '80vh',
+        'max-height': '80vh',
+        overflow: 'auto'
       }"
     >
       <mat-card-title>
@@ -42,10 +59,26 @@
     <mat-card
       #layout
       fxFlexAlign="center"
-      [ngStyle]="{
+      [ngStyle.xs]="{
         width: 100 + '%',
         'background-color': 'green',
-        'min-height': '120px'
+        'min-height': '30vh',
+        'max-height': '30vh',
+        overflow: 'auto'
+      }"
+      [ngStyle.lt-md]="{
+        width: 100 + '%',
+        'background-color': 'green',
+        'min-height': '38vh',
+        'max-height': '38vh',
+        overflow: 'auto'
+      }"
+      [ngStyle]="{
+        'background-color': 'green',
+        width: 100 + '%',
+        'min-height': '80vh',
+        'max-height': '80vh',
+        overflow: 'auto'
       }"
       cdkDropList
       #doneList="cdkDropList"
@@ -64,6 +97,7 @@
         </span>
       </mat-card-title>
       <mat-card-content id="drop-container-card">
+        <!-- only for first initiation this card is used -->
         <div
           id="drop-container-div"
           *ngIf="!this._layoutPreviewService.lastSavedLayout"
@@ -88,11 +122,25 @@
   >
     <mat-card
       fxFlexAlign="center"
-      [ngStyle]="{
+      [ngStyle.xs]="{
         width: 100 + '%',
         'background-color': 'yellow',
-        'min-height': '120px',
-        'max-height': '85vh',
+        'min-height': '30vh',
+        'max-height': '30vh',
+        overflow: 'auto'
+      }"
+      [ngStyle.lt-md]="{
+        width: 100 + '%',
+        'background-color': 'yellow',
+        'min-height': '38vh',
+        'max-height': '38vh',
+        overflow: 'auto'
+      }"
+      [ngStyle]="{
+        'background-color': 'yellow',
+        width: 100 + '%',
+        'min-height': '80vh',
+        'max-height': '80vh',
         overflow: 'auto'
       }"
     >

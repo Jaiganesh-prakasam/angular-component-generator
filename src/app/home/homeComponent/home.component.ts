@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, OnDestroy } from "@angular/core";
+import { Component, OnInit, Inject, OnDestroy, Input } from "@angular/core";
 import { CdkDragDrop } from "@angular/cdk/drag-drop";
 import {
   MatDialog,
@@ -8,9 +8,10 @@ import {
 import { LayoutPreviewService } from "../../service/layout-preview.service";
 
 export interface DialogData {
-  name: string;
+  id: string;
   placeholder: string;
   type: string;
+  label: string;
 }
 
 @Component({
@@ -19,7 +20,6 @@ export interface DialogData {
   styleUrls: ["./home.component.sass"]
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  labelName: string;
   id: string;
   todo = ["Input", "Radio Button", "Check Box", "Button"];
   done = [];
@@ -31,10 +31,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    console.log(this._layoutPreviewService.lastSavedLayout);
+    // to populate Layout and JSON card with previous values
     if (this._layoutPreviewService.lastSavedLayout) {
       let node = this._layoutPreviewService.lastSavedLayout;
       document.getElementById("drop-container-card").appendChild(node);
+
       this.formJson = this._layoutPreviewService.lastSavedJSON;
       document.getElementById("json").innerHTML = JSON.stringify(
         this.formJson,
@@ -43,22 +44,17 @@ export class HomeComponent implements OnInit, OnDestroy {
       );
     }
   }
-  ngAfterViewInit() {}
 
   ngOnDestroy() {
+    // to save the form layout in a service to access in download page
     let selectedComponent = document.getElementById("drop-container-div");
-    console.log(selectedComponent);
-    console.log("home destroyed");
     this._layoutPreviewService.lastSavedLayout = selectedComponent;
     this._layoutPreviewService.lastSavedJSON = this.formJson;
-    console.log(this._layoutPreviewService.lastSavedJSON);
-    console.log(typeof this._layoutPreviewService.lastSavedJSON);
   }
 
   drop(event: CdkDragDrop<string[]>) {
     // to capture only the drop event on the other container
     if (event.previousContainer !== event.container) {
-      console.log(event.previousContainer.data[event.previousIndex]);
       this.elementDetailsPopup(
         event.previousContainer.data[event.previousIndex]
       );
@@ -82,21 +78,29 @@ export class HomeComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(inputContentAttributesDialog, {
       width: "250px",
       data: {
+        label: "",
         fieldType: "input",
-        name: "",
+        id: "",
         type: "",
         placeholder: ""
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // this.labelName = result.labelName;
       if (result) {
-        var x = document.createElement("INPUT");
-        x.setAttribute("type", "text");
-        x.setAttribute("value", "Hello World!");
-        x.setAttribute("placeholder", "Hello World!");
-        document.getElementById("drop-container-div").appendChild(x);
+        let parentElement = document.getElementById("drop-container-div");
+        let labelElement = document.createElement("LABEL");
+        let labelName = document.createTextNode(result.label);
+        labelElement.style.fontSize = "30px";
+        labelElement.appendChild(labelName);
+        parentElement.appendChild(labelElement);
+        let InputElement = document.createElement("INPUT");
+        InputElement.style.height = "40px";
+        InputElement.style.fontSize = "30px";
+        InputElement.setAttribute("type", result.type);
+        InputElement.setAttribute("placeholder", result.placeholder);
+        InputElement.id = result.id;
+        parentElement.appendChild(InputElement);
         this.jsonUpdater(result);
       }
       console.log(result);
