@@ -31,9 +31,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    console.log(this._layoutPreviewService.lastSavedLayout);
     if (this._layoutPreviewService.lastSavedLayout) {
       let node = this._layoutPreviewService.lastSavedLayout;
-      document.getElementById("dropContainer").appendChild(node);
+      document.getElementById("drop-container-card").appendChild(node);
       this.formJson = this._layoutPreviewService.lastSavedJSON;
       document.getElementById("json").innerHTML = JSON.stringify(
         this.formJson,
@@ -42,8 +43,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       );
     }
   }
+  ngAfterViewInit() {}
+
   ngOnDestroy() {
-    let selectedComponent = document.getElementById("dropContainer");
+    let selectedComponent = document.getElementById("drop-container-div");
     console.log(selectedComponent);
     console.log("home destroyed");
     this._layoutPreviewService.lastSavedLayout = selectedComponent;
@@ -93,7 +96,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         x.setAttribute("type", "text");
         x.setAttribute("value", "Hello World!");
         x.setAttribute("placeholder", "Hello World!");
-        document.getElementById("dropContainer").appendChild(x);
+        document.getElementById("drop-container-div").appendChild(x);
         this.jsonUpdater(result);
       }
       console.log(result);

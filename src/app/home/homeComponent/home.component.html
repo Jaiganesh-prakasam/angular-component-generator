@@ -3,10 +3,11 @@
     fxLayout="row"
     fxLayout.xs="column"
     fxLayoutGap="10px"
-    fxFlexAlign="center"
+    fxFlexAlign="flex-start"
+    fxFlexAlign.xs="center"
     [ngStyle.xs]="{ width: 90 + '%' }"
     [ngStyle.lt-md]="{ width: 100 + '%' }"
-    [ngStyle]="{ width: 66 + '%' }"
+    [ngStyle]="{ width: 75 + '%' }"
   >
     <mat-card
       #formItem
@@ -52,11 +53,26 @@
       [cdkDropListConnectedTo]="[todoList]"
       (cdkDropListDropped)="drop($event)"
     >
-      <mat-card-title>
-        Layout
+      <mat-card-title style="display: flex;justify-content: space-between;">
+        <span>
+          Layout
+        </span>
+        <span>
+          <button routerLink="/download" mat-raised-button color="primary">
+            Download
+          </button>
+        </span>
       </mat-card-title>
-      <mat-card-content style="display: flex; flex-direction: column;">
-        <div id="dropContainer"></div>
+      <mat-card-content id="drop-container-card">
+        <div
+          id="drop-container-div"
+          *ngIf="!this._layoutPreviewService.lastSavedLayout"
+          [ngStyle]="{
+            display: 'grid',
+            'max-height': '85vh',
+            overflow: 'auto'
+          }"
+        ></div>
       </mat-card-content>
     </mat-card>
   </div>
@@ -68,14 +84,16 @@
     fxFlexAlign="center"
     [ngStyle.xs]="{ width: 90 + '%' }"
     [ngStyle.lt-md]="{ width: 100 + '%' }"
-    [ngStyle]="{ width: 33 + '%' }"
+    [ngStyle]="{ width: 25 + '%' }"
   >
     <mat-card
       fxFlexAlign="center"
       [ngStyle]="{
         width: 100 + '%',
         'background-color': 'yellow',
-        'min-height': '120px'
+        'min-height': '120px',
+        'max-height': '85vh',
+        overflow: 'auto'
       }"
     >
       <mat-card-title>

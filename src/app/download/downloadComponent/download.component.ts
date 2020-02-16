@@ -11,6 +11,6 @@ export class DownloadComponent implements OnInit {
 
   ngOnInit() {
     let node = this._layoutPreviewService.lastSavedLayout;
-    document.getElementById("preview-layout").appendChild(node);
+    document.getElementById("preview-layout-card").appendChild(node);
   }
 }

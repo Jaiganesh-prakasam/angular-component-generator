@@ -4,6 +4,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MaterialModule } from "../material/material.module";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { FormsModule } from "@angular/forms";
+import { Routes, RouterModule } from "@angular/router";
 
 import {
   HomeComponent,
@@ -18,7 +19,8 @@ import {
     FlexLayoutModule,
     MaterialModule,
     DragDropModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   exports: [HomeComponent]
 })
