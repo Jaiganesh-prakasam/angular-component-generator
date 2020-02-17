@@ -7,11 +7,15 @@ import {
 } from "@angular/material/dialog";
 import { LayoutPreviewService } from "../../service/layout-preview.service";
 
-export interface DialogData {
+export interface InputDialogData {
   id: string;
   placeholder: string;
   type: string;
   label: string;
+}
+export interface buttonDialogData {
+  id: string;
+  value: string;
 }
 
 @Component({
@@ -21,7 +25,7 @@ export interface DialogData {
 })
 export class HomeComponent implements OnInit, OnDestroy {
   id: string;
-  todo = ["Input", "Radio Button", "Check Box", "Button"];
+  todo = ["Input", "Button"];
   done = [];
   formJson: Object[];
 
@@ -71,6 +75,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       case "Check Box":
         break;
       case "Button":
+        this.buttonGenerator();
         break;
     }
   }
@@ -87,23 +92,55 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      // to avoid action while cancel pressed or popup dismissed
       if (result) {
         let parentElement = document.getElementById("drop-container-div");
+
+        // label creation
         let labelElement = document.createElement("LABEL");
         let labelName = document.createTextNode(result.label);
-        labelElement.style.fontSize = "30px";
+        labelElement.style.fontSize = "15px";
         labelElement.appendChild(labelName);
         parentElement.appendChild(labelElement);
+
+        // Input element
         let InputElement = document.createElement("INPUT");
-        InputElement.style.height = "40px";
-        InputElement.style.fontSize = "30px";
+        InputElement.style.height = "20px";
+        InputElement.style.fontSize = "15px";
         InputElement.setAttribute("type", result.type);
         InputElement.setAttribute("placeholder", result.placeholder);
         InputElement.id = result.id;
         parentElement.appendChild(InputElement);
         this.jsonUpdater(result);
       }
-      console.log(result);
+    });
+  }
+  buttonGenerator() {
+    const dialogRef = this.dialog.open(buttonContentAttributesDialog, {
+      width: "250px",
+      data: {
+        fieldType: "button",
+        id: "",
+        value: ""
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // to avoid action while cancel pressed or popup dismissed
+      if (result) {
+        let parentElement = document.getElementById("drop-container-div");
+
+        // text creation
+        let labelName = document.createTextNode(result.value);
+
+        // Input element
+        let InputElement = document.createElement("BUTTON");
+        InputElement.style.height = "20px";
+        InputElement.id = result.id;
+        InputElement.appendChild(labelName);
+        parentElement.appendChild(InputElement);
+        this.jsonUpdater(result);
+      }
     });
   }
   jsonUpdater(pushObject) {
@@ -131,7 +168,22 @@ export class HomeComponent implements OnInit, OnDestroy {
 export class inputContentAttributesDialog {
   constructor(
     public dialogRef: MatDialogRef<inputContentAttributesDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: InputDialogData
+  ) {}
+
+  cancelClick(): void {
+    this.dialogRef.close();
+  }
+}
+
+@Component({
+  selector: "button-content-attributes",
+  templateUrl: "button-content-attributes.html"
+})
+export class buttonContentAttributesDialog {
+  constructor(
+    public dialogRef: MatDialogRef<buttonContentAttributesDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: buttonDialogData
   ) {}
 
   cancelClick(): void {

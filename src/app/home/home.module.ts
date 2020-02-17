@@ -8,12 +8,20 @@ import { Routes, RouterModule } from "@angular/router";
 
 import {
   HomeComponent,
-  inputContentAttributesDialog
+  inputContentAttributesDialog,
+  buttonContentAttributesDialog
 } from "./homeComponent/home.component";
 
 @NgModule({
-  entryComponents: [inputContentAttributesDialog],
-  declarations: [HomeComponent, inputContentAttributesDialog],
+  entryComponents: [
+    inputContentAttributesDialog,
+    buttonContentAttributesDialog
+  ],
+  declarations: [
+    HomeComponent,
+    inputContentAttributesDialog,
+    buttonContentAttributesDialog
+  ],
   imports: [
     CommonModule,
     FlexLayoutModule,
