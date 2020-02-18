@@ -1,16 +1,16 @@
 # ComponentGenerator
 
-Project is an example of responsive Single page application using angular
+Project is a responsive Single page application using angular which implements Drag and drop feature to create angular component.
 
-Drag and drop to create angular component.
-
-The application is under progress.
-
-Working features of the application are:
+Features of the application are:
 
 Responsive UI
 
-Drag and drop of input fieild, printing JSON code to the UI. 
+Drag and drop of input field and button field to layput to create angular component
+
+Printing JSON code to the UI
+
+Downloading the component files after seeing preview
 
 ## Development server
 
