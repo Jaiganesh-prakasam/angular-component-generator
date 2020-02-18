@@ -107,6 +107,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         let InputElement = document.createElement("INPUT");
         InputElement.style.height = "20px";
         InputElement.style.fontSize = "15px";
+        InputElement.style.marginBottom = "6px";
+        InputElement.style.marginTop = "3px";
         InputElement.setAttribute("type", result.type);
         InputElement.setAttribute("placeholder", result.placeholder);
         InputElement.id = result.id;
@@ -136,6 +138,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         // Input element
         let InputElement = document.createElement("BUTTON");
         InputElement.style.height = "20px";
+        InputElement.style.margin = "10px";
         InputElement.id = result.id;
         InputElement.appendChild(labelName);
         parentElement.appendChild(InputElement);

@@ -33,16 +33,20 @@ export class DownloadComponent implements OnInit {
     
     }
     `;
-    let file = new Blob([tsFileDAta], { type: "text/ts;charset=utf-8" });
-    saveAs(file, "componentName.component.ts");
+    if (this.node) {
+      let file = new Blob([tsFileDAta], { type: "text/ts;charset=utf-8" });
+      saveAs(file, "componentName.component.ts");
 
-    let file1 = new Blob([], { type: "text/css;charset=utf-8" });
-    saveAs(file1, "componentName.component.css");
+      let file1 = new Blob([], { type: "text/css;charset=utf-8" });
+      saveAs(file1, "componentName.component.css");
 
-    let file2 = new Blob([this.node.innerHTML], {
-      type: "text/html;charset=utf-8"
-    });
-    saveAs(file2, "componentName.component.html");
-    // console.log(`${this.node.innerHTML}`);
+      let file2 = new Blob([this.node.innerHTML], {
+        type: "text/html;charset=utf-8"
+      });
+      saveAs(file2, "componentName.component.html");
+      // console.log(`${this.node.innerHTML}`);
+    } else {
+      alert("please create fields in layout before downloading");
+    }
   }
 }

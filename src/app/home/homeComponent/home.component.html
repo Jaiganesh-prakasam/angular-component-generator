@@ -15,21 +15,21 @@
       fxFlexAlign="center"
       [ngStyle.xs]="{
         width: 100 + '%',
-        'background-color': 'red',
+        'background-color': '#7765E3',
         'min-height': '30vh',
         'max-height': '30vh',
         overflow: 'auto'
       }"
       [ngStyle.lt-md]="{
         width: 100 + '%',
-        'background-color': 'red',
+        'background-color': '#7765E3',
         'min-height': '38vh',
         'max-height': '38vh',
         overflow: 'auto'
       }"
       [ngStyle]="{
         width: 100 + '%',
-        'background-color': 'red',
+        'background-color': '#7765E3',
         'min-height': '80vh',
         'max-height': '80vh',
         overflow: 'auto'
@@ -48,7 +48,11 @@
             class="example-list"
           >
             <div class="example-box" *ngFor="let item of todo" cdkDrag>
-              <button class="button-margin" mat-raised-button color="primary">
+              <button
+                class="button-margin form-item-button-color"
+                mat-raised-button
+                color="primary"
+              >
                 {{ item }}
               </button>
             </div>
@@ -61,20 +65,20 @@
       fxFlexAlign="center"
       [ngStyle.xs]="{
         width: 100 + '%',
-        'background-color': 'green',
+        'background-color': '#3B60E4',
         'min-height': '30vh',
         'max-height': '30vh',
         overflow: 'auto'
       }"
       [ngStyle.lt-md]="{
         width: 100 + '%',
-        'background-color': 'green',
+        'background-color': '#3B60E4',
         'min-height': '38vh',
         'max-height': '38vh',
         overflow: 'auto'
       }"
       [ngStyle]="{
-        'background-color': 'green',
+        'background-color': '#3B60E4',
         width: 100 + '%',
         'min-height': '80vh',
         'max-height': '80vh',
@@ -91,7 +95,11 @@
           Layout
         </span>
         <span>
-          <button routerLink="/download" mat-raised-button color="primary">
+          <button
+            routerLink="/download"
+            mat-raised-button
+            class="layout-button-color"
+          >
             Download
           </button>
         </span>
@@ -124,20 +132,20 @@
       fxFlexAlign="center"
       [ngStyle.xs]="{
         width: 100 + '%',
-        'background-color': 'yellow',
+        'background-color': '#EBEBEB',
         'min-height': '30vh',
         'max-height': '30vh',
         overflow: 'auto'
       }"
       [ngStyle.lt-md]="{
         width: 100 + '%',
-        'background-color': 'yellow',
+        'background-color': '#EBEBEB',
         'min-height': '38vh',
         'max-height': '38vh',
         overflow: 'auto'
       }"
       [ngStyle]="{
-        'background-color': 'yellow',
+        'background-color': '#EBEBEB',
         width: 100 + '%',
         'min-height': '80vh',
         'max-height': '80vh',
