@@ -51,9 +51,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // to save the form layout in a service to access in download page
-    let selectedComponent = document.getElementById("drop-container-div");
-    this._layoutPreviewService.lastSavedLayout = selectedComponent;
-    this._layoutPreviewService.lastSavedJSON = this.formJson;
+    if (this.formJson) {
+      let selectedComponent = document.getElementById("drop-container-div");
+      this._layoutPreviewService.lastSavedLayout = selectedComponent;
+      this._layoutPreviewService.lastSavedJSON = this.formJson;
+    }
   }
 
   drop(event: CdkDragDrop<string[]>) {

@@ -33,7 +33,7 @@ export class DownloadComponent implements OnInit {
     
     }
     `;
-    if (this.node) {
+    if (this._layoutPreviewService.lastSavedLayout) {
       let file = new Blob([tsFileDAta], { type: "text/ts;charset=utf-8" });
       saveAs(file, "componentName.component.ts");
 
