@@ -13,23 +13,19 @@ import {
 } from "./homeComponent/home.component";
 
 @NgModule({
-  entryComponents: [
-    inputContentAttributesDialog,
-    buttonContentAttributesDialog
-  ],
-  declarations: [
-    HomeComponent,
-    inputContentAttributesDialog,
-    buttonContentAttributesDialog
-  ],
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    MaterialModule,
-    DragDropModule,
-    FormsModule,
-    RouterModule
-  ],
-  exports: [HomeComponent]
+    declarations: [
+        HomeComponent,
+        inputContentAttributesDialog,
+        buttonContentAttributesDialog
+    ],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        MaterialModule,
+        DragDropModule,
+        FormsModule,
+        RouterModule
+    ],
+    exports: [HomeComponent]
 })
 export class HomeModule {}

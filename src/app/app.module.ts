@@ -15,25 +15,24 @@ import { AboutComponent } from "./about/aboutComponent/about.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
-  entryComponents: [],
-  declarations: [
-    AppComponent,
-    LayoutComponent,
-    HeaderComponent,
-    SidenavListComponent,
-    AboutComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    HomeModule,
-    AboutModule,
-    DownloadModule,
-    FlexLayoutModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LayoutComponent,
+        HeaderComponent,
+        SidenavListComponent,
+        AboutComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        HomeModule,
+        AboutModule,
+        DownloadModule,
+        FlexLayoutModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}
