@@ -20,10 +20,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Live example
-
-https://form-component-generator.herokuapp.com/home
-
 ## Screen shot
 
 <img width="1511" alt="image" src="https://user-images.githubusercontent.com/42837541/180606702-b9b8774b-9293-4ffb-aa96-1b8f2d296ea1.png">
